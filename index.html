@@ -34,15 +34,39 @@
       </section>
 
       <section class="panel">
-        <h2>部屋の寸法</h2>
+        <h2>部屋の形</h2>
         <div class="field-row">
-          <label>幅 (cm)<input type="number" id="room-width" min="10" step="1" value="400" /></label>
+          <label>形のタイプ
+            <select id="room-shape-type">
+              <option value="rect">長方形</option>
+              <option value="polygon">自由な形(多角形)</option>
+            </select>
+          </label>
         </div>
-        <div class="field-row">
-          <label>奥行き (cm)<input type="number" id="room-depth" min="10" step="1" value="300" /></label>
+
+        <div id="rect-controls">
+          <div class="field-row">
+            <label>幅 (cm)<input type="number" id="room-width" min="10" step="1" value="400" /></label>
+            <label>奥行き (cm)<input type="number" id="room-depth" min="10" step="1" value="300" /></label>
+          </div>
+          <div class="field-row">
+            <button id="apply-room-size-btn">この寸法で反映</button>
+          </div>
         </div>
-        <div class="field-row">
-          <button id="apply-room-size-btn">部屋サイズを反映</button>
+
+        <div id="polygon-controls" hidden>
+          <p class="hint">部屋の上をクリックして角を順番に追加してください(3点以上)。下のリストで座標を数値で微調整できます。</p>
+          <div class="field-row">
+            <button id="polygon-undo-btn" class="secondary">1つ戻す</button>
+            <button id="polygon-clear-btn" class="danger">クリア</button>
+          </div>
+          <div class="field-row">
+            <label><input type="checkbox" id="polygon-snap" checked /> 10cm単位でスナップ</label>
+          </div>
+          <ul id="polygon-points-list" class="points-list"></ul>
+          <div class="field-row">
+            <button id="polygon-add-point-btn" class="secondary">頂点を数値で追加</button>
+          </div>
         </div>
       </section>
 
@@ -76,7 +100,11 @@
       <div class="room-toolbar">
         <span id="room-dims-label">400cm × 300cm</span>
         <span class="selected-tools" id="selected-tools" hidden>
-          <button id="rotate-btn">回転</button>
+          <label class="rotate-label">向き
+            <input type="range" id="rotate-slider" min="0" max="359" step="1" value="0" />
+            <input type="number" id="rotate-number" min="0" max="359" step="1" value="0" />°
+          </label>
+          <button id="rotate-90-btn" class="secondary">+90°</button>
           <button id="delete-placement-btn" class="danger">この家具を削除</button>
         </span>
       </div>
