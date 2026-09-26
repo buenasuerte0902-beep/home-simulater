@@ -1,0 +1,264 @@
+:root {
+  --bg: #f4f6f9;
+  --panel-bg: #ffffff;
+  --border: #d8dee5;
+  --text: #24292e;
+  --accent: #4f8bd6;
+  --accent-dark: #3a6fb0;
+  --danger: #d64f4f;
+  --danger-dark: #b03a3a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app-header {
+  padding: 12px 20px;
+  background: var(--accent-dark);
+  color: white;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.layout {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  align-items: flex-start;
+}
+
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.panel h2 {
+  font-size: 0.95rem;
+  margin: 0 0 8px 0;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0 0 8px 0;
+}
+
+.field-row {
+  margin-bottom: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+.field-row:last-child {
+  margin-bottom: 0;
+}
+
+.field-row label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  gap: 4px;
+}
+
+input[type="text"],
+input[type="number"] {
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+input[type="color"] {
+  padding: 2px;
+  width: 100%;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+select {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  font-size: 0.85rem;
+  flex: 1;
+}
+
+button:hover {
+  background: var(--accent-dark);
+}
+
+button.secondary {
+  background: #8a8f98;
+}
+
+button.secondary:hover {
+  background: #6f747c;
+}
+
+button.danger {
+  background: var(--danger);
+}
+
+button.danger:hover {
+  background: var(--danger-dark);
+}
+
+.furniture-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.furniture-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: grab;
+  background: #fafbfc;
+}
+
+.furniture-list li:active {
+  cursor: grabbing;
+}
+
+.furn-swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.furn-info {
+  flex: 1;
+  font-size: 0.8rem;
+}
+
+.furn-info .furn-name {
+  font-weight: 600;
+  display: block;
+}
+
+.furn-info .furn-size {
+  color: #666;
+}
+
+.remove-furniture-btn {
+  flex: 0;
+  padding: 2px 8px;
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+.remove-furniture-btn:hover {
+  background: var(--danger);
+  color: white;
+}
+
+.room-area-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.room-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.selected-tools {
+  display: flex;
+  gap: 8px;
+}
+
+.selected-tools button {
+  flex: 0;
+}
+
+.room {
+  position: relative;
+  background: repeating-linear-gradient(
+      0deg,
+      #ffffff,
+      #ffffff 19px,
+      #eef1f4 19px,
+      #eef1f4 20px
+    ),
+    repeating-linear-gradient(90deg, #ffffff, #ffffff 19px, #eef1f4 19px, #eef1f4 20px);
+  border: 2px solid #333;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.placement {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+  font-size: 0.7rem;
+  color: rgba(0, 0, 0, 0.75);
+  cursor: grab;
+  user-select: none;
+  text-align: center;
+  padding: 2px;
+  overflow: hidden;
+}
+
+.placement.selected {
+  outline: 3px solid #ff9800;
+  outline-offset: 1px;
+  z-index: 10;
+}
+
+.placement:active {
+  cursor: grabbing;
+}

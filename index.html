@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2D 家具配置シミュレーター</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>2D 家具配置シミュレーター</h1>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <section class="panel">
+        <h2>部屋の保存・読み込み</h2>
+        <div class="field-row">
+          <input type="text" id="room-name" placeholder="部屋の名前" />
+        </div>
+        <div class="field-row">
+          <button id="save-room-btn">部屋を保存</button>
+          <button id="new-room-btn" class="secondary">新規部屋</button>
+        </div>
+        <div class="field-row">
+          <select id="saved-rooms-select">
+            <option value="">-- 保存済みの部屋 --</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <button id="load-room-btn">読み込む</button>
+          <button id="delete-room-btn" class="danger">削除</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>部屋の寸法</h2>
+        <div class="field-row">
+          <label>幅 (cm)<input type="number" id="room-width" min="10" step="1" value="400" /></label>
+        </div>
+        <div class="field-row">
+          <label>奥行き (cm)<input type="number" id="room-depth" min="10" step="1" value="300" /></label>
+        </div>
+        <div class="field-row">
+          <button id="apply-room-size-btn">部屋サイズを反映</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>家具を登録</h2>
+        <div class="field-row">
+          <label>名前<input type="text" id="furn-name" placeholder="例: ソファ" /></label>
+        </div>
+        <div class="field-row">
+          <label>幅 (cm)<input type="number" id="furn-width" min="1" step="1" value="80" /></label>
+        </div>
+        <div class="field-row">
+          <label>奥行き (cm)<input type="number" id="furn-depth" min="1" step="1" value="40" /></label>
+        </div>
+        <div class="field-row">
+          <label>色<input type="color" id="furn-color" value="#4f8bd6" /></label>
+        </div>
+        <div class="field-row">
+          <button id="add-furniture-btn">家具リストに追加</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>家具リスト</h2>
+        <p class="hint">ドラッグして部屋に配置できます</p>
+        <ul id="furniture-list" class="furniture-list"></ul>
+      </section>
+    </aside>
+
+    <section class="room-area-wrapper">
+      <div class="room-toolbar">
+        <span id="room-dims-label">400cm × 300cm</span>
+        <span class="selected-tools" id="selected-tools" hidden>
+          <button id="rotate-btn">回転</button>
+          <button id="delete-placement-btn" class="danger">この家具を削除</button>
+        </span>
+      </div>
+      <div id="room" class="room"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
